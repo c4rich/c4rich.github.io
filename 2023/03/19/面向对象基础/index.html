@@ -1,0 +1,567 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>面向对象基础 | 飘渺之旅</title><meta name="author" content="c4rich"><meta name="copyright" content="c4rich"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="面相对象面向对象概念面向过程与面向对象编程语言大体上可以分为两类：面向过程、面向对象。  面向过程 代表语言：C语言 开发思想：先做什么，后做什么 特点：性能比面向对象略高，适合做一些小系统，比如计算器、门禁系统、红绿灯 封装：封装函数   面向对象 代表语言：Java，C++、C#等 开发思想：强调宏观的把控，微观上依然是面向过程 特点：性能略低，但代码的可读性、可维护性极高，适合做大型的商业级">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向对象基础">
+<meta property="og:url" content="https://c4rich.github.io/2023/03/19/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="飘渺之旅">
+<meta property="og:description" content="面相对象面向对象概念面向过程与面向对象编程语言大体上可以分为两类：面向过程、面向对象。  面向过程 代表语言：C语言 开发思想：先做什么，后做什么 特点：性能比面向对象略高，适合做一些小系统，比如计算器、门禁系统、红绿灯 封装：封装函数   面向对象 代表语言：Java，C++、C#等 开发思想：强调宏观的把控，微观上依然是面向过程 特点：性能略低，但代码的可读性、可维护性极高，适合做大型的商业级">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2023-03-19T15:12:40.000Z">
+<meta property="article:modified_time" content="2023-03-28T15:04:00.537Z">
+<meta property="article:author" content="c4rich">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Javase">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://c4rich.github.io/2023/03/19/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '面向对象基础',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-28 23:04:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.iqiq.io/qihuancode/images/dev/img/202303192049233.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="飘渺之旅"><span class="site-name">飘渺之旅</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">面向对象基础</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-19T15:12:40.000Z" title="发表于 2023-03-19 23:12:40">2023-03-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-28T15:04:00.537Z" title="更新于 2023-03-28 23:04:00">2023-03-28</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="面向对象基础"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2023/03/19/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2023/03/19/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="面相对象"><a href="#面相对象" class="headerlink" title="面相对象"></a>面相对象</h1><h2 id="面向对象概念"><a href="#面向对象概念" class="headerlink" title="面向对象概念"></a>面向对象概念</h2><h3 id="面向过程与面向对象"><a href="#面向过程与面向对象" class="headerlink" title="面向过程与面向对象"></a>面向过程与面向对象</h3><p>编程语言大体上可以分为两类：面向过程、面向对象。</p>
+<ul>
+<li>面向过程<ul>
+<li>代表语言：C语言</li>
+<li>开发思想：先做什么，后做什么</li>
+<li>特点：性能比面向对象略高，适合做一些小系统，比如计算器、门禁系统、红绿灯</li>
+<li>封装：封装函数</li>
+</ul>
+</li>
+<li>面向对象<ul>
+<li>代表语言：Java，C++、C#等</li>
+<li>开发思想：强调宏观的把控，微观上依然是面向过程</li>
+<li>特点：性能略低，但代码的可读性、可维护性极高，适合做大型的商业级应用，比如管理系统、网站、APP、小程序等。</li>
+<li>封装：封装方法、类、数据</li>
+</ul>
+</li>
+</ul>
+<h3 id="面向对象举例"><a href="#面向对象举例" class="headerlink" title="面向对象举例"></a>面向对象举例</h3><p>如何开汽车？</p>
+<p>—面向过程分析							—面向对象分析		        </p>
+<p>1.踩离合							        * 驾驶员</p>
+<p>2.挂挡							        * 汽车</p>
+<p>3.踩油门，放离合							* 驾驶员开汽车        </p>
+<p>4.车开了									  car.start();</p>
+<p>如何修建房子？</p>
+<p>—面向过程分析							—面向对象分析</p>
+<p>1.设计房子								  * 设计师</p>
+<p>​	– 修建几层楼，几间卧室等		          – 负责房屋设计</p>
+<p>2.购买材料								  * 采购员</p>
+<p>​	– 建筑材料、装修材料等					  – 负责材料购买	</p>
+<p>3.修建毛坯房					              * 建筑工人 </p>
+<p>​	– 憨实地基，修建房屋等			  		  – 负责房屋建设</p>
+<p>4.房屋装修								  * 装修工人 	</p>
+<p>​	– 卫生间先防水后贴地板等			      – 负责房屋装修 </p>
+<p>5.入住									  * 入住</p>
+<h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><p>对象：<strong>万物皆对象</strong>，具体到一个特定的事物都是一个对象，比如一台电脑、一张桌子、一名学生</p>
+<p>类：将现实中一些相似、相同的事物 抽取出公共的特点就是 <strong>类</strong>。比如：电脑、桌子、学生。类中共有的特点，比如电脑有内存、硬盘、显示器分辨率等参数的取值，在类中是无法确定的，因为没有具体到某个事物，只有 具体到某个事物时，才能够确定这些参数，具体到的这台电脑就是<strong>对象</strong>。类像是一个模板，模板中将这类事物的特点进行了抽取，而这些属性具体的参数并没有提供，需要对象进行填充</p>
+<h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2><h3 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h3><p>类的定义使用 <code>class</code> 关键字</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">修饰符 class 类名 &#123;</span><br><span class="line">    变量</span><br><span class="line">    方法</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在类中定义的 <strong>非static修饰的</strong> 变量叫做 <strong>成员变量</strong>，<strong>非static修饰的</strong> 方法叫做 <strong>成员方法</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.c4rich.unit1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 成员变量</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String gender;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 成员方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">study</span><span class="params">()</span>  &#123;</span><br><span class="line">        System.out.println(name + <span class="string">&quot;学习Java&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sleep</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(name + <span class="string">&quot;睡觉&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">eat</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(name + <span class="string">&quot;吃饭&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意</p>
+<ol>
+<li>在一个Java文件中允许定义多个类，<code>public</code> 修饰的类最多只能有一个，并且public修饰的类名必须与文件名一致</li>
+<li>类名命名规范：允许使用数字、字母、下划线、美元符号组成，并且首字母不能是数字。一般只用 数字和字母，并且遵循大驼峰规则：每个单词的首字母大写，并且第一个字母首字母大写</li>
+<li>在类中允许定义变量，不使用static修饰叫做 <strong>成员变量</strong>。成员变量在定义时可以不去初始化，成员变量有默认值，取值方式与数组一样：<strong>整数默认0，浮点数默认0.0，字符默认<code>\u0000</code> ，布尔默认 false，引用类型默认null</strong></li>
+<li>在类中允许定义方法，不使用static修饰叫做 <strong>成员方法</strong>。成员方法中可以使用成员变量</li>
+<li>方法中参数列表可以是引用类型，因此参数也可以传递一个对象</li>
+</ol>
+<h3 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h3><p>类是将一类事物的共用特点进行抽取，抽象出一个“模板”，可以根据模板去创建出对应的对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">类名 对象名 = <span class="keyword">new</span> 类名();</span><br></pre></td></tr></table></figure>
+
+<p>当创建完一个对象之后，这个对象就代表着一个具体的事物，这个事物的属性就可以去指定具体的取值。通过对象操作成员变量的语法如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 取值</span></span><br><span class="line">数据类型 变量名 = 对象.变量名</span><br><span class="line"><span class="comment">// 赋值</span></span><br><span class="line">对象.变量名 = 值</span><br></pre></td></tr></table></figure>
+
+<p>对象还能操作成员方法，语法与操作成员变量类似，与前面方法的调用 也很相似</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对象.方法名(参数列表);</span><br></pre></td></tr></table></figure>
+
+<p>代码示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.c4rich.unit1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.c4rich.unit1.domain.Student;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">        student.name = <span class="string">&quot;张三&quot;</span>;</span><br><span class="line">        student.age = <span class="number">23</span>;</span><br><span class="line">        student.gender = <span class="string">&quot;男&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> student.name;</span><br><span class="line">        System.out.println(name);</span><br><span class="line">        student.study();</span><br><span class="line">        student.eat();</span><br><span class="line">        student.sleep();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>注意</p>
+<ol>
+<li>对象在new的时候就已经创建了。前面定义的变量仅仅是接收这个对象的引用。</li>
+<li>调用成员变量和成员方法时，使用对象.变量名或者方法名进行调用。如果变量或者方法有了static关键字，调用时就需要使用类名.变量名或者方法名。</li>
+<li>成员变量隶属于对象，成员方法隶属于对象。</li>
+<li>关于对象名的命名，只需要遵循变量名的命名规则即可。开发中一般采用类名的一部分单词首字母小写作为对象名，或者使用类名的所有的首字母进行命名</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo2</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Teacher</span> <span class="variable">teacher</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Teacher</span>();</span><br><span class="line">        <span class="type">UserService</span> <span class="variable">us</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserService</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="成员变量默认值"><a href="#成员变量默认值" class="headerlink" title="成员变量默认值"></a>成员变量默认值</h3><p>成员变量在创建时可以不指定默认值，此时对于不同的数据类型会有 对应的默认值</p>
+<table>
+<thead>
+<tr>
+<th><strong>成员变量的默认值</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>整型</td>
+<td>0</td>
+</tr>
+<tr>
+<td>浮点型</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>字符型</td>
+<td>‘\u0000’</td>
+</tr>
+<tr>
+<td>布尔值</td>
+<td>false</td>
+</tr>
+<tr>
+<td>引用类型</td>
+<td>null</td>
+</tr>
+</tbody></table>
+<p>除了这些默认取值之外，也可以在创建类的时候手动赋予默认值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">修饰符 数据类型 变量名 = 默认值;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.c4rich.unit1.domain;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 成员变量</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">String</span> <span class="variable">gender</span> <span class="operator">=</span> <span class="string">&quot;男&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> score;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.c4rich.unit1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.c4rich.unit1.domain.Student;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo3</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">        System.out.println(student.name);</span><br><span class="line">        System.out.println(student.age);</span><br><span class="line">        System.out.println(student.score);</span><br><span class="line">        System.out.println(student.gender);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="创建对象内存分析"><a href="#创建对象内存分析" class="headerlink" title="创建对象内存分析"></a>创建对象内存分析</h3><p>先抛出问题：下面的代码是否能够修改成功</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.c4rich.unit1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.c4rich.unit1.domain.Student;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo4</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">        student.age = <span class="number">18</span>;</span><br><span class="line">        changeFlag(student);</span><br><span class="line">        System.out.println(student.flag);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">changeFlag</span><span class="params">(Student student)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(student.age &gt;= <span class="number">18</span>) &#123;</span><br><span class="line">            student.flag = <span class="literal">true</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            student.flag = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>结论：修改成功</p>
+<p>在对象进行创建时，会在堆内存中分配空间，对象中的成员变量都存储到堆内存中，之后操作对象的成员变量，会先通过地址找到对象在堆内存中所在的位置，再根据变量名去找这个对象的对应的成员变量。</p>
+<p><img src="https://raw.githubusercontent.com/c4rich/imgs/main/imgs/202303281822025.png" alt="1635132695813"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.c4rich.unit1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.c4rich.unit1.domain.Student;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo4</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">        s1.age = <span class="number">17</span>;</span><br><span class="line">        s2.age = <span class="number">18</span>;</span><br><span class="line">        System.out.println(<span class="string">&quot;交换前：s1.age = &quot;</span>+s1.age+<span class="string">&quot;，s2.age = &quot;</span> + s2.age);</span><br><span class="line">        exchangeStudent(s1, s2);</span><br><span class="line">        System.out.println(<span class="string">&quot;交换后：s1.age = &quot;</span>+s1.age+<span class="string">&quot;，s2.age = &quot;</span> + s2.age);</span><br><span class="line">        <span class="type">int</span>[] ints = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">10</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 交换不成功，因为s1和s2仅仅是记录学生对象的引用</span></span><br><span class="line"><span class="comment">     * 方法内仅仅是在交换exchangeStudent栈帧中的s1和s2的值</span></span><br><span class="line"><span class="comment">     * 对main方法栈帧中s1和s2不造成影响，更影响不到堆内存</span></span><br><span class="line"><span class="comment">     * 该方法只在栈内存中完成交换，没有操作堆内存</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> s1</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> s2</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">exchangeStudent</span><span class="params">(Student s1, Student s2)</span>&#123;</span><br><span class="line">        <span class="type">Student</span> <span class="variable">temp</span> <span class="operator">=</span> s1;</span><br><span class="line">        s1 = s2;</span><br><span class="line">        s2 = temp;</span><br><span class="line">        System.out.println(<span class="string">&quot;方法内交换后：s1.age = &quot;</span>+s1.age+<span class="string">&quot;，s2.age = &quot;</span> + s2.age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main2</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">        s1.age = <span class="number">17</span>;</span><br><span class="line">        s2.age = <span class="number">18</span>;</span><br><span class="line">        System.out.println(<span class="string">&quot;交换前：s1.age = &quot;</span>+s1.age+<span class="string">&quot;，s2.age = &quot;</span> + s2.age);</span><br><span class="line">        exchangeAge(s1, s2);</span><br><span class="line">        System.out.println(<span class="string">&quot;交换后：s1.age = &quot;</span>+s1.age+<span class="string">&quot;，s2.age = &quot;</span> + s2.age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 能够交换成功，因为学生对象的age是存储在堆内存中</span></span><br><span class="line"><span class="comment">     * 直接修改堆内存中的数据能够交换成功</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> s1</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> s2</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">exchangeAge</span><span class="params">(Student s1, Student s2)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> s1.age;</span><br><span class="line">        s1.age = s2.age;</span><br><span class="line">        s2.age = temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main1</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">        student.age = <span class="number">18</span>;</span><br><span class="line">        changeFlag(student);</span><br><span class="line">        System.out.println(student.flag);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">exchange</span><span class="params">(<span class="type">int</span> num1, <span class="type">int</span> num2)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> num1;</span><br><span class="line">        num1 = num2;</span><br><span class="line">        num2 = temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 该方法可以修改成功</span></span><br><span class="line"><span class="comment">     * 因为学生对象存在了堆内存中，而age和flag存储在学生对象里</span></span><br><span class="line"><span class="comment">     * 因此age和flag也是在堆内存中</span></span><br><span class="line"><span class="comment">     * 通过student存储的引用到堆内存中修改flag，能够修改成功</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> student</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">changeFlag</span><span class="params">(Student student)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(student.age &gt;= <span class="number">18</span>) &#123;</span><br><span class="line">            student.flag = <span class="literal">true</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            student.flag = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="成员变量和局部变量区别"><a href="#成员变量和局部变量区别" class="headerlink" title="成员变量和局部变量区别"></a>成员变量和局部变量区别</h3><ul>
+<li>定义位置不同<ul>
+<li>成员变量 定义在类中</li>
+<li>局部变量定义在代码块中</li>
+</ul>
+</li>
+<li>所属不同<ul>
+<li>成员变量属于对象</li>
+<li>局部变量 属于代码块</li>
+</ul>
+</li>
+<li>内存中存储位置不同<ul>
+<li>成员变量存储在堆内存</li>
+<li>局部变量存储在栈内存</li>
+</ul>
+</li>
+<li>生命周期不同<ul>
+<li>成员变量随着对象的创建而创建，随着对象的销毁而销毁</li>
+<li>局部变量随着代码块的进入而创建，随着代码块的执行完毕而销毁</li>
+</ul>
+</li>
+<li>修饰符不同<ul>
+<li>成员变量允许有 <code>public、protected、默认、private、static、final</code> 修饰符</li>
+<li>局部变量只能有final</li>
+</ul>
+</li>
+<li>初始化不同<ul>
+<li>成员变量默认有初始化值</li>
+<li>局部变量没有初始化值</li>
+</ul>
+</li>
+</ul>
+<p>在JVM中有一个线程叫做 <strong>GC线程</strong>，也叫做垃圾回收线程，它的作用是回收堆内存中没有用的对象。在程序运行过程中，GC线程会 不定时地扫描堆内存中的对象，在扫描过程中，如果发现某个对象已经没有程序在使用了，就会在某个时间将这个对象进行回收（销毁）</p>
+<h3 id="匿名对象"><a href="#匿名对象" class="headerlink" title="匿名对象"></a>匿名对象</h3><p>在我们使用new关键字创建对象时，<code>new 类名()</code> 才是我们创建出的对象，为了方便对对象进行操作，一般定义一个变量接收这个对象的引用，给这个变量进行命名，后续的操作使用对象名进行操作</p>
+<p>有时候我们可能 仅仅是想调用这个对象内的某个方法，此时也可以不定义变量名进行接收，这种没有定义变量名接收的就叫做匿名对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Student</span>();</span><br></pre></td></tr></table></figure>
+
+<p>一般在只想调用对象的某个方法时，可以使用匿名对象，或者在方法传参时可以使用匿名对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.c4rich.unit1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.c4rich.unit1.domain.Student;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo5</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"><span class="comment">//        new Student().study();</span></span><br><span class="line"><span class="comment">//        method(new Student());</span></span><br><span class="line">        <span class="type">Student</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">        s1.name = <span class="string">&quot;张三&quot;</span>;</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Student</span>().study();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">method</span><span class="params">(Student student)</span> &#123;</span><br><span class="line">        student.name = <span class="string">&quot;张三&quot;</span>;</span><br><span class="line">        System.out.println(student.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h2><h3 id="构造方法简介"><a href="#构造方法简介" class="headerlink" title="构造方法简介"></a>构造方法简介</h3><p>构造方法又叫做 构造器，作用是在创建对象时完成一些初始化操作，构造方法是在创建对象时进行调用，使用 <code>new</code> 关键字。前面提到的创建对象的语法，实际上new的是这个类的构造方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">类名 对象名 = <span class="keyword">new</span> 构造方法(参数列表);</span><br></pre></td></tr></table></figure>
+
+<p>构造方法声明语法与普通的方法不一样。构造方法没有返回值，方法名必须要与类名一致</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">修饰符 方法名(参数列表) &#123;</span><br><span class="line">    代码块</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>修饰符：控制构造方法的访问权限</li>
+<li>方法名：构造方法的方法名 <strong>必须是类名</strong></li>
+<li>参数列表：构造方法的参数列表与方法的参数列表规则一样。一般构造方法的作用是创建对象时完成一些初始化操作，因此参数列表一般用于传递一些用来初始化使用的参数</li>
+<li>代码块：构造方法被调用时执行的代码块</li>
+<li>构造方法定义在类中，与成员变量和成员方法是平级</li>
+</ol>
+<h3 id="构造方法使用"><a href="#构造方法使用" class="headerlink" title="构造方法使用"></a>构造方法使用</h3><h4 id="无参构造方法"><a href="#无参构造方法" class="headerlink" title="无参构造方法"></a>无参构造方法</h4><p>一般简称为<strong>无参构造</strong>，是没有参数的构造方法。当<strong>一个类没有构造方法时</strong>，编译器会默认给我们提供一个无参构造，也可以自己定义一个无参构造。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">Student</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;无参构造被执行了&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="有参构造方法"><a href="#有参构造方法" class="headerlink" title="有参构造方法"></a>有参构造方法</h4><p>一般简称为<strong>有参构造</strong>，默认情况下没有有参构造，开发者可以自己定义有参构造。当一个类中有了有参构造之后，就没有默认的无参构造了，如果需要使用无参构造，也可以自己定义。建议每一个类中都要定义一个无参构造</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">Student</span><span class="params">(String myName, <span class="type">int</span> myAge)</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;有参构造被执行了&quot;</span>);</span><br><span class="line">    name = myName;</span><br><span class="line">    age = myAge;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>构造方法是可以重载的</p>
+<p><strong>问题：创建对象完全是由构造方法完成的吗？</strong></p>
+<p>不是。创建对象分为以下几步</p>
+<ol>
+<li>直接在堆内存中开辟存储对象的区域，并且完成成员变量默认的初始化</li>
+<li>执行对象成员变量的显式初始化</li>
+<li>执行构造方法</li>
+<li>返回该对象在堆内存中的引用</li>
+</ol>
+<p>调用构造方法仅仅是对象创建的其中一步，调用了构造方法可能并不一定创建了对象</p>
+<h3 id="构造方法和成员方法的区别"><a href="#构造方法和成员方法的区别" class="headerlink" title="构造方法和成员方法的区别"></a>构造方法和成员方法的区别</h3><ul>
+<li>定义格式不同<ul>
+<li>构造方法没有返回值，方法名必须与类名一致</li>
+<li>成员方法可以有返回值，方法名可以自定义</li>
+</ul>
+</li>
+<li>调用时机不同<ul>
+<li>构造方法在创建对象时调用</li>
+<li>成员方法在创建对象后调用</li>
+</ul>
+</li>
+<li>调用方式不同<ul>
+<li>构造方法使用new关键字调用</li>
+<li>成员方法使用<code>对象.方法名</code>调用</li>
+</ul>
+</li>
+<li>调用次数区别<ul>
+<li>构造方法使用new关键字只能调用一次，使用this关键字可以在构造方法中进行调用</li>
+<li>成员方法在创建完对象后可以被调用任意次。</li>
+</ul>
+</li>
+</ul>
+<h2 id="this关键字"><a href="#this关键字" class="headerlink" title="this关键字"></a>this关键字</h2><h3 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h3><p>在方法中使用变量时，遵循了<strong>就近原则</strong>。当方法参数和成员变量存在同名变量时，如果直接使用变量名来进行操作，会遵循就近原则，即：使用的是方法的参数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">Student</span><span class="params">(String name, <span class="type">int</span> age)</span> &#123;</span><br><span class="line">    name = name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>而现在想要让程序把构造方法接收到的name赋值给当前对象的name成员变量，我们可以使用 <code>对象名.变量名</code> 进行区分。但是，在构造方法中并没有对象名，因此JVM在创建对象后会为我们默认分配一个引用 <code>this</code>，这个this就代表 <strong>当前对象</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">Student</span><span class="params">(String name, <span class="type">int</span> age)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="this关键字调用成员变量"><a href="#this关键字调用成员变量" class="headerlink" title="this关键字调用成员变量"></a>this关键字调用成员变量</h3><p>可以在类中使用 <code>this.成员变量名</code> 调用 当前对象的成员变量。当方法与成员变量的变量名存在重复时，编译器会采用就近原则，此时可以使用 this 关键字进行区分。当不存在重复时，this可以省略，编译器帮我们把this加上。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.c4rich.domain;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 成员变量</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">String</span> <span class="variable">gender</span> <span class="operator">=</span> <span class="string">&quot;男&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> score;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 是否成年，true成年，false未成年</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> flag;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;无参构造被执行了&quot;</span>);</span><br><span class="line">        name = <span class="string">&quot;张三&quot;</span>;</span><br><span class="line">        age = <span class="number">23</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">(String name, <span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">hit</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        System.out.println(<span class="built_in">this</span>.name + <span class="string">&quot;与&quot;</span> + name + <span class="string">&quot;正在大家，你们不要再打了&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="this关键字调用成员方法"><a href="#this关键字调用成员方法" class="headerlink" title="this关键字调用成员方法"></a>this关键字调用成员方法</h3><p>this关键字可以用来调用成员方法，默认情况下也是可以省略，编译器为我们加上this关键字。this关键字可以用来区分一个方法是否带有static修饰</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">show</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.sleep();</span><br><span class="line">    study();</span><br><span class="line">    eat();</span><br><span class="line">    hit(<span class="string">&quot;李四&quot;</span>);</span><br><span class="line">    <span class="built_in">this</span>.method1();</span><br><span class="line">    method2();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">method1</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;我是方法1&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">method2</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;我是方法2&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>由于方法的调用一般不存在歧义，因此this关键字调用方法时，可以省略。</p>
+</blockquote>
+<h3 id="this关键字调用构造方法"><a href="#this关键字调用构造方法" class="headerlink" title="this关键字调用构造方法"></a>this关键字调用构造方法</h3><p>this关键字可以调用构造方法，语法如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>(参数列表);</span><br></pre></td></tr></table></figure>
+
+<p>编译器会根据参数列表的类型和参数个数帮我们匹配到合适的构造方法。通过使用this关键字，能够让构造方法也拥有较高的复用性。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.c4rich.domain;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.rmi.Naming;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">public</span> String gender;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> height;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> score;</span><br><span class="line">    <span class="keyword">public</span> String idCard;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name, <span class="type">int</span> age, String gender, <span class="type">double</span> height, <span class="type">double</span> score, String idCard)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">        <span class="built_in">this</span>.gender = gender;</span><br><span class="line">        <span class="built_in">this</span>.height = height;</span><br><span class="line">        <span class="built_in">this</span>.score = score;</span><br><span class="line">        <span class="built_in">this</span>.idCard = idCard;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(<span class="type">int</span> age, String gender, <span class="type">double</span> height, <span class="type">double</span> score, String idCard)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>(<span class="string">&quot;张三&quot;</span>, age, gender, height, score, idCard);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name, <span class="type">int</span> age, String gender, <span class="type">double</span> height, <span class="type">double</span> score)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>(name, age, gender, height, score, <span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name, <span class="type">int</span> age, String gender, <span class="type">double</span> height)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>(name, age, gender, height, <span class="number">60</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name, <span class="type">int</span> age, String gender)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>(name, age, gender, <span class="number">0.0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name, <span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>(name, age, <span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>(name, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>(<span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ol>
+<li>在使用this关键字调用构造方法时，不会重新创建对象</li>
+<li>this关键字调用构造方法时，必须在构造方法的第一行。因此在一个构造方法中不能使用两次this关键字调用其他构造方法</li>
+<li>this关键字调用构造方法不能省略</li>
+</ol>
+<hr>
+<p><strong>随堂练习</strong></p>
+<ol>
+<li><p>定义一个坐标类（Point)，用于表示二维空间中的一个坐标位置。通过坐标类的方法，实现计算两个坐标位置之间的距离（要求：使用构造方法）。</p>
+<p>坐标类成员变量：X轴点（x）、Y轴点（y）</p>
+<p>坐标类构造方法：Point(double x, double y)</p>
+<p>坐标类成员方法：计算两个坐标位置之间的距离。</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.c4rich.domain;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Point</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> x;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> y;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Point</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Point</span><span class="params">(<span class="type">double</span> x, <span class="type">double</span> y)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.x = x;</span><br><span class="line">        <span class="built_in">this</span>.y = y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 计算当前坐标与另一个坐标的距离</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">calcLength</span><span class="params">(Point point)</span> &#123;</span><br><span class="line">        <span class="type">double</span> <span class="variable">xLength</span> <span class="operator">=</span> <span class="built_in">this</span>.x - point.x;</span><br><span class="line">        <span class="type">double</span> <span class="variable">yLength</span> <span class="operator">=</span> <span class="built_in">this</span>.y - point.y;</span><br><span class="line">        <span class="type">double</span> <span class="variable">result</span> <span class="operator">=</span> xLength * xLength + yLength * yLength;</span><br><span class="line">        <span class="type">double</span> <span class="variable">length</span> <span class="operator">=</span> Math.sqrt(result);</span><br><span class="line">        <span class="keyword">return</span> length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.c4rich.unit3.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.c4rich.domain.Point;</span><br><span class="line"></span><br><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> * 定义一个坐标类（Point)，用于表示二维空间中的一个坐标位置。通过坐标类的方法</span></span><br><span class="line"><span class="comment"> * 实现计算两个坐标位置之间的距离（要求：使用构造方法）。</span></span><br><span class="line"><span class="comment"> * 坐标类成员变量：X轴点（x）、Y轴点（y）</span></span><br><span class="line"><span class="comment"> * 坐标类构造方法：Point(double x, double y)</span></span><br><span class="line"><span class="comment"> * 坐标类成员方法：计算两个坐标位置之间的距离。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Point</span> <span class="variable">p1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">5</span>, <span class="number">5</span>);</span><br><span class="line">        <span class="type">Point</span> <span class="variable">p2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">2</span>, <span class="number">1</span>);</span><br><span class="line"><span class="comment">//        double length = p1.calcLength(p2);</span></span><br><span class="line"><span class="comment">//        System.out.println(length);</span></span><br><span class="line">        <span class="type">double</span> <span class="variable">length</span> <span class="operator">=</span> p2.calcLength(p1);</span><br><span class="line">        System.out.println(length);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h2><p>被static关键字修饰的变量和方法叫做 <strong>静态变量</strong> 和 <strong>静态方法</strong>，static关键字修饰的不属于对象，而是属于类。</p>
+<h3 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h3><p>给变量加一个static关键字就是静态变量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.c4rich.unit4;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.c4rich.domain.Student3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo1</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Student3.school = <span class="string">&quot;南昌大学&quot;</span>;</span><br><span class="line">        System.out.println(Student3.school);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main1</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Student3</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student3</span>();</span><br><span class="line">        s1.school = <span class="string">&quot;南昌大学&quot;</span>;</span><br><span class="line">        s1.name = <span class="string">&quot;张三&quot;</span>;</span><br><span class="line">        <span class="type">Student3</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student3</span>();</span><br><span class="line">        s2.school = <span class="string">&quot;南昌大学科学技术学院&quot;</span>;</span><br><span class="line">        System.out.println(s2.name);</span><br><span class="line">        System.out.println(s1.school);</span><br><span class="line">        System.out.println(s2.school);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>注意</p>
+<ol>
+<li>一个类中定义的<strong>static变量是属于类</strong>的，并且全局只有一份。</li>
+<li>静态变量可以用 <code>对象.变量名</code> 调用，也可以用 <code>类名.变量名</code> 调用，一般建议使用类名</li>
+</ol>
+<hr>
+<p>在首次使用一个类时，这个类的信息会被加载到 <strong>方法区（永久代&#x2F;共享数据区&#x2F;元空间）</strong>，之后再使用这个类，不会重复加载，即一个类在方法区里只会有一份。而静态变量和静态方法则是跟随着这个类存储到了方法区，不管使用对象名还是类名操作静态变量，实际上都是在操作方法区中的一份class信息</p>
+<p><img src="https://raw.githubusercontent.com/c4rich/imgs/main/imgs/202303281823854.png" alt="1635209898898"></p>
+<p>通过画图分析static变量，我们能够推断出，在开发中应当尽可能避免修改静态变量的值</p>
+<p>我们可以给静态变量加一个 <code>final</code> 关键字，定义成常量，让其他的程序无法对其进行修改。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">SCHOOL</span> <span class="operator">=</span> <span class="string">&quot;南昌大学&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>对于静态的常量，我们一般会单独创建一个类进行管理</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.c4rich.constant;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CoreConstant</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">SCHOOL</span> <span class="operator">=</span> <span class="string">&quot;南昌大学&quot;</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><p>静态方法是使用static关键字进行修饰，修饰的方法就叫做 <strong>静态方法</strong></p>
+<p>静态方法同样是属于类，调用时可以使用对象名调用，也可以使用类名调用，一般建议用类名</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.c4rich.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ArrayUtil</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 查找指定值在数组中的索引位置</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> arr</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> value</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">search</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> value)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i] == value) &#123;</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>为什么要用静态方法？</strong></p>
+<p>比如Arrays、Math两个类中几乎所有的方法都是静态方法</p>
+<p>对于这两个类，它们提供的所有的方法都是 <strong>工具性质的</strong> 方法，我们其实只需要能够保证这些方法可以被正常调用即可，至于调用方式并不关心，此时不管创建多少对象都是无意义的，反而会造成堆内存空间的浪费，因此我们使用到方法区的特性：同一个类只会被加载一次，因此将工具性质的方法放到方法区内，不管创建多少对象，方法只有一份。为了避免工具性质的方法所在的类重复创建对象，一般会将无参构造私有化，让外面的代码无法创建对象。</p>
+<p>工具方法所在的类也可以叫 <strong>工具类</strong></p>
+<h3 id="static关键字之间的调用"><a href="#static关键字之间的调用" class="headerlink" title="static关键字之间的调用"></a>static关键字之间的调用</h3><p>当类被加载时，对象不一定被创建，因此<strong>静态方法不能调用非静态的变量和方法</strong>。而成员方法属于对象，当调用成员方法时对象一定被创建了，类也一定被加载了，因此此时属于类的数据和方法都可以调用，即<strong>非静态的方法能够调用 静态的变量和方法</strong></p>
+<p>总结起来一句话：**static修饰的只能使用static修饰的，非static无限制 **</p>
+<h3 id="静态代码块"><a href="#静态代码块" class="headerlink" title="静态代码块"></a>静态代码块</h3><h4 id="静态代码块-1"><a href="#静态代码块-1" class="headerlink" title="静态代码块"></a>静态代码块</h4><p>使用static关键字修饰，定义在类中与静态变量和静态方法平级的代码块叫做<strong>静态代码块</strong>，作用是给类做初始化操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String address;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">    address = <span class="string">&quot;武汉&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>静态代码块会随着类的加载只执行一次，如果有多个静态代码块，会按照从上往下的顺序进行执行。</p>
+<h4 id="构造代码块"><a href="#构造代码块" class="headerlink" title="构造代码块"></a>构造代码块</h4><p>构造代码块是定义在类中，与成员变量和成员方法平级的，不使用static修饰的代码块，主要是给对象进行初始化操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;构造代码块1&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;构造代码块2&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>构造代码块会随着new的时候执行一次，下次new的时候，还会执行一次</p>
+<p>执行顺序：静态代码块-&gt;构造代码块-&gt;构造方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;静态代码块1&quot;</span>);</span><br><span class="line">    address = <span class="string">&quot;武汉&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;静态代码块2&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;构造代码块1&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;构造代码块2&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">Student3</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>(<span class="string">&quot;张三&quot;</span>, <span class="number">23</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;无参构造方法&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">Student3</span><span class="params">(String name, <span class="type">int</span> age)</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;有参构造&quot;</span>);</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="package-包"><a href="#package-包" class="headerlink" title="package 包"></a>package 包</h2><h3 id="package概述"><a href="#package概述" class="headerlink" title="package概述"></a>package概述</h3><p>包就像是文件夹的一样的东西，作用是对类进行管理和分类</p>
+<p>对于同名类，也可以使用包进行管理，不同包下允许同名类</p>
+<h3 id="包的定义"><a href="#包的定义" class="headerlink" title="包的定义"></a>包的定义</h3><p>命名：包名一般采用<strong>公司域名倒着写</strong>，遵循标识符规范，一般全部字母小写，单词间使用 <code>.</code> 。<strong>包名不能以 java 开头</strong></p>
+<p>定义到某个包下的类，需要在类最上面第一行代码声明所在包，使用 <code>package</code> 关键字</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.c4rich.unit1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Java常用包"><a href="#Java常用包" class="headerlink" title="Java常用包"></a>Java常用包</h3><table>
+<thead>
+<tr>
+<th>java中的常用包</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>java.lang</td>
+<td>包含一些Java语言的核心类，如String、Math、System等。lang包下的类使用时不需要导包</td>
+</tr>
+<tr>
+<td>java.awt</td>
+<td>包含了构成抽象窗口工具集（abstract window toolkits）的多个类，这些类被用来构建和管理应用程序的图形用户界面(GUI)。</td>
+</tr>
+<tr>
+<td>java.net</td>
+<td>包含执行与网络相关的操作的类。</td>
+</tr>
+<tr>
+<td>java.io</td>
+<td>包含能提供多种输入&#x2F;输出功能的类。</td>
+</tr>
+<tr>
+<td>java.util</td>
+<td>包含一些实用工具类，如定义系统特性、使用与日期日历相关的函数。</td>
+</tr>
+</tbody></table>
+<h3 id="Java类的访问"><a href="#Java类的访问" class="headerlink" title="Java类的访问"></a>Java类的访问</h3><p>当我们定义了一个类之后，可以在其他代码中进行访问，访问时需要导包，导包使用 <code>import</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.c4rich.unit1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.c4rich.domain.Student;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>当需要使用两个不同包下的同名类时，其中一个可以导包，另外一个只能使用 <strong>全类名</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.c4rich.unit4;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.c4rich.pojo.Student;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo4</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">        com.c4rich.domain.<span class="type">Student</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">com</span>.c4rich.domain.Student();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>当使用的类就在当前包下，导包可以省略</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.c4rich.unit4;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo5</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://c4rich.github.io">c4rich</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://c4rich.github.io/2023/03/19/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/">https://c4rich.github.io/2023/03/19/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://c4rich.github.io" target="_blank">飘渺之旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a><a class="post-meta__tags" href="/tags/Javase/">Javase</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">设计模式</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/19/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%BF%9B%E9%98%B6/" title="面向对象进阶"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">面向对象进阶</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/03/19/IO%E6%B5%81/" title="IO流"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-19</div><div class="title">IO流</div></div></a></div><div><a href="/2023/03/19/XML%E5%92%8CJSON%E8%A7%A3%E6%9E%90/" title="XML和JSON解析"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-19</div><div class="title">XML和JSON解析</div></div></a></div><div><a href="/2023/03/19/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%92%8CStream/" title="lambda表达式和Stream"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-19</div><div class="title">lambda表达式和Stream</div></div></a></div><div><a href="/2023/03/19/%E5%88%9D%E8%AF%86Java/" title="初识Java"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-19</div><div class="title">初识Java</div></div></a></div><div><a href="/2023/03/19/%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/" title="反射和注解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-19</div><div class="title">反射和注解</div></div></a></div><div><a href="/2023/03/19/%E5%BC%82%E5%B8%B8/" title="异常"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-19</div><div class="title">异常</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">Valine</span><span class="switch-btn"></span><span class="second-comment">Disqus</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">c4rich</div><div class="author-info__description">人生漫漫，身处何处不飘摇</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/c4rich" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:75302@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E7%9B%B8%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.</span> <span class="toc-text">面相对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">面向对象概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E4%B8%8E%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.1.1.</span> <span class="toc-text">面向过程与面向对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%BE%E4%BE%8B"><span class="toc-number">1.1.2.</span> <span class="toc-text">面向对象举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.2.</span> <span class="toc-text">类和对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B"><span class="toc-number">1.3.</span> <span class="toc-text">面向对象编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.3.1.</span> <span class="toc-text">类的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.3.2.</span> <span class="toc-text">创建对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-number">1.3.3.</span> <span class="toc-text">成员变量默认值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90"><span class="toc-number">1.3.4.</span> <span class="toc-text">创建对象内存分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%92%8C%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E5%8C%BA%E5%88%AB"><span class="toc-number">1.3.5.</span> <span class="toc-text">成员变量和局部变量区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BF%E5%90%8D%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.3.6.</span> <span class="toc-text">匿名对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="toc-number">1.4.</span> <span class="toc-text">构造方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E7%AE%80%E4%BB%8B"><span class="toc-number">1.4.1.</span> <span class="toc-text">构造方法简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E4%BD%BF%E7%94%A8"><span class="toc-number">1.4.2.</span> <span class="toc-text">构造方法使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E5%8F%82%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">无参构造方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E5%8F%82%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">有参构造方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E5%92%8C%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.4.3.</span> <span class="toc-text">构造方法和成员方法的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#this%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">1.5.</span> <span class="toc-text">this关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.5.1.</span> <span class="toc-text">简单介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#this%E5%85%B3%E9%94%AE%E5%AD%97%E8%B0%83%E7%94%A8%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F"><span class="toc-number">1.5.2.</span> <span class="toc-text">this关键字调用成员变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#this%E5%85%B3%E9%94%AE%E5%AD%97%E8%B0%83%E7%94%A8%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95"><span class="toc-number">1.5.3.</span> <span class="toc-text">this关键字调用成员方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#this%E5%85%B3%E9%94%AE%E5%AD%97%E8%B0%83%E7%94%A8%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="toc-number">1.5.4.</span> <span class="toc-text">this关键字调用构造方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#static%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">1.6.</span> <span class="toc-text">static关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F"><span class="toc-number">1.6.1.</span> <span class="toc-text">静态变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.6.2.</span> <span class="toc-text">静态方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#static%E5%85%B3%E9%94%AE%E5%AD%97%E4%B9%8B%E9%97%B4%E7%9A%84%E8%B0%83%E7%94%A8"><span class="toc-number">1.6.3.</span> <span class="toc-text">static关键字之间的调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-number">1.6.4.</span> <span class="toc-text">静态代码块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E5%9D%97-1"><span class="toc-number">1.6.4.1.</span> <span class="toc-text">静态代码块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-number">1.6.4.2.</span> <span class="toc-text">构造代码块</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#package-%E5%8C%85"><span class="toc-number">1.7.</span> <span class="toc-text">package 包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#package%E6%A6%82%E8%BF%B0"><span class="toc-number">1.7.1.</span> <span class="toc-text">package概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%85%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.7.2.</span> <span class="toc-text">包的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E5%B8%B8%E7%94%A8%E5%8C%85"><span class="toc-number">1.7.3.</span> <span class="toc-text">Java常用包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E7%B1%BB%E7%9A%84%E8%AE%BF%E9%97%AE"><span class="toc-number">1.7.4.</span> <span class="toc-text">Java类的访问</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/19/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/" title="数据类型和运算符">数据类型和运算符</a><time datetime="2023-03-19T15:33:03.000Z" title="发表于 2023-03-19 23:33:03">2023-03-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/19/IO%E6%B5%81/" title="IO流">IO流</a><time datetime="2023-03-19T15:12:40.000Z" title="发表于 2023-03-19 23:12:40">2023-03-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/19/XML%E5%92%8CJSON%E8%A7%A3%E6%9E%90/" title="XML和JSON解析">XML和JSON解析</a><time datetime="2023-03-19T15:12:40.000Z" title="发表于 2023-03-19 23:12:40">2023-03-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/19/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%92%8CStream/" title="lambda表达式和Stream">lambda表达式和Stream</a><time datetime="2023-03-19T15:12:40.000Z" title="发表于 2023-03-19 23:12:40">2023-03-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/19/%E5%88%9D%E8%AF%86Java/" title="初识Java">初识Java</a><time datetime="2023-03-19T15:12:40.000Z" title="发表于 2023-03-19 23:12:40">2023-03-19</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By c4rich</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://c4rich.github.io/2023/03/19/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/'
+    this.page.identifier = '/2023/03/19/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/'
+    this.page.title = '面向对象基础'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+
+  document.getElementById('darkmode').addEventListener('click', () => {
+    setTimeout(() => window.disqusReset(), 200)
+  })
+}
+
+if ('Valine' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
